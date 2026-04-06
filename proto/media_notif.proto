@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package medianotif;
+option go_package = "nexuschat/proto/medianotif";
+
+service MediaNotifService {
+  // Client streaming
+  rpc UploadFile (stream FileChunk) returns (UploadResponse);
+  // Server streaming
+  rpc SubscribeNotif (SubscribeRequest) returns (stream Notification);
+}
+
+message FileChunk {
+  bytes chunk_data = 1;
+  string filename = 2;
+}
+
+message UploadResponse {
+  bool success = 1;
+  string file_url = 2;
+}
+
+message SubscribeRequest {
+  string client_id = 1;
+}
+
+message Notification {
+  string system_message = 1;
+  string type = 2;
+}
