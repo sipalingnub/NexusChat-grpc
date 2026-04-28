@@ -1,5 +1,10 @@
 # 🚀 NexusChat: Microservices gRPC & Web Dashboard
 
+## Kelompok Integrasi Sistem
+```
+Muhammad Khairul Yahya - 5027241092
+Muhammad Huda Rabbani - 5027241098
+```
 NexusChat adalah proyek simulasi sistem *chatting* berskala *enterprise* menggunakan arsitektur **Microservices (gRPC)** di *backend* dan **WebSocket (Node.js)** sebagai *BFF (Backend for Frontend)* untuk Web Dashboard. Proyek ini mendemonstrasikan 4 jenis komunikasi gRPC sekaligus serta integrasinya dengan aplikasi Web *real-time*.
 
 ## 🏗️ Arsitektur Sistem
