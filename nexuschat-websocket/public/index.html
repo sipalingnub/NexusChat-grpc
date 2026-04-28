@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>NexusChat Web Monitor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> </head>
+<body>
+    <div class="header">🚀 NexusChat Web Dashboard (gRPC + WebSocket)</div>
+    
+    <div class="container">
+        <div class="box">
+            <h3>📈 Live gRPC Traffic</h3>
+            <canvas id="trafficChart"></canvas>
+        </div>
+
+        <div class="box">
+            <h3>💬 Chat Monitor</h3>
+            <div id="chat-box" class="chat-box"></div>
+            <div id="recent-users" class="recent-users"></div>
+            <div class="input-area">
+                <input type="text" id="senderId" placeholder="Nama Kamu" value="AdminWeb">
+                <input type="text" id="targetId" placeholder="Target" value="arul">
+                <input type="text" id="msgContent" placeholder="Ketik pesan...">
+                <button onclick="sendMessage()">Kirim</button>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>⚙️ Server Status & Command</h3>
+            <p>Status: <span id="online-status" class="dot"></span> <b id="status-text">Connected</b></p>
+            <div id="alert-box" class="alert-box">Menunggu alert server...</div>
+            
+            <hr>
+            <h4>🛠️ Command & Control</h4>
+            <input type="text" id="kickTarget" placeholder="User ID yang mau di-kick">
+            <button onclick="kickUser()" style="background: red;">Kick User!</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
