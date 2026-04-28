@@ -46,14 +46,23 @@ func (s *server) SubscribeNotif(req *pb.SubscribeRequest, stream pb.MediaNotifSe
 		"Tips: Gunakan password yang kuat!",
 	}
 
+	// 1. Kirim 3 notif awal
 	for _, n := range notifs {
 		if err := stream.Send(&pb.Notification{SystemMessage: n, Type: "INFO"}); err != nil {
 			return err
 		}
-		// Jeda 3 detik antar notifikasi agar efek streaming-nya terlihat
 		time.Sleep(3 * time.Second)
 	}
-	return nil
+
+	// 2. INFINITE LOOP: Agar stream tetap hidup selamanya
+	for {
+		time.Sleep(15 * time.Second) // Jeda 15 detik
+		pesanPing := "Sistem beroperasi normal (Ping)"
+		if err := stream.Send(&pb.Notification{SystemMessage: pesanPing, Type: "SYSTEM"}); err != nil {
+			log.Printf("📴 Klien %s putus dari stream notif.", req.GetClientId())
+			return err // Berhenti kalau Node.js dimatikan
+		}
+	}
 }
 
 func main() {

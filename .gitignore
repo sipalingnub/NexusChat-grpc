@@ -10,3 +10,6 @@ vendor/
 
 # Go workspace file
 go.work
+
+# Node.js dependencies
+node_modules/
